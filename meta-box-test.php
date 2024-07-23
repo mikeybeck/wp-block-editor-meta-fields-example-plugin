@@ -24,15 +24,21 @@ function sidebar_plugin_register() {
 add_action( 'init', 'sidebar_plugin_register' );
 
 function sidebar_plugin_add_meta_block_field() {
-    register_post_meta( 'post', 'sidebar_plugin_meta_block_field', array(
+    register_post_meta( 'post', '_sidebar_plugin_meta_block_field', array(
         'show_in_rest' => true,
         'single' => true,
         'type' => 'string',
+        'auth_callback' => function() {
+            return current_user_can('edit_posts');
+        }
     ) );
-    register_post_meta( 'page', 'sidebar_plugin_meta_block_field', array(
+    register_post_meta( 'page', '_sidebar_plugin_meta_block_field', array(
         'show_in_rest' => true,
         'single' => true,
         'type' => 'string',
+        'auth_callback' => function() {
+            return current_user_can('edit_pages');
+        }
     ) );
 }
 add_action( 'init', 'sidebar_plugin_add_meta_block_field' );

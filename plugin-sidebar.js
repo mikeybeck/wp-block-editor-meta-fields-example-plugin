@@ -10,7 +10,7 @@
 		var metaFieldValue = useSelect( function ( select ) {
 			return select( 'core/editor' ).getEditedPostAttribute(
 				'meta'
-			)[ 'sidebar_plugin_meta_block_field' ];
+			)[ '_sidebar_plugin_meta_block_field' ];
 		}, [] );
 
 		var editPost = useDispatch( 'core/editor' ).editPost;
@@ -20,7 +20,7 @@
 			value: metaFieldValue,
 			onChange: function ( content ) {
 				editPost( {
-					meta: { sidebar_plugin_meta_block_field: content },
+					meta: { _sidebar_plugin_meta_block_field: content },
 				} );
 			},
 		} );
