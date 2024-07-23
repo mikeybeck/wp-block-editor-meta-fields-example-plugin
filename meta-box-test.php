@@ -16,10 +16,6 @@ function sidebar_plugin_register() {
             'wp-data',
         )
     );
-//    wp_register_style(
-//        'plugin-sidebar-css',
-//        plugins_url( 'plugin-sidebar.css', __FILE__ )
-//    );
 }
 add_action( 'init', 'sidebar_plugin_register' );
 
@@ -52,7 +48,6 @@ add_action( 'init', 'custom_post_type_support' );
 
 function sidebar_plugin_script_enqueue() {
     wp_enqueue_script( 'plugin-sidebar-js' );
-    wp_enqueue_style( 'plugin-sidebar-css' );
 }
 add_action( 'enqueue_block_editor_assets', 'sidebar_plugin_script_enqueue' );
 
